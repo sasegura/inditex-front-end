@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Podcast } from '../../interfaces/podcast';
 
 const initialState = {
   podcasts: [],

@@ -9,3 +9,10 @@ export interface Podcast {
   };
   'im:artist': { label: string };
 }
+
+export interface PodcastDetail {
+  imageUrl: string;
+  title: string;
+  author: string;
+  description: string;
+}
