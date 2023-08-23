@@ -13,7 +13,7 @@ describe('PodcastsList', () => {
   beforeEach(() => {
     act(() => {
       mockedUseGetPodcasts.mockImplementation(() => ({
-        podcastsList: PodcastsMock,
+        filteredPodcast: PodcastsMock,
         isLoading: false,
         onHandleClick: mockHandleClick,
       }));
