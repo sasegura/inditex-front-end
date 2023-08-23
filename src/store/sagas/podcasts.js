@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { fetchPodcast } from '../../api/getPodcasts';
+import { fetchPodcast } from '../../api/fetchPodcasts';
 
 import {
   errorFetchingPodcasts,

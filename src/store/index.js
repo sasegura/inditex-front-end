@@ -6,6 +6,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 
 import podcastsReducer from './reducers/podcastSlice';
 import rootSaga from './sagas';
+import episodesReducer from './reducers/episodeSlice';
 
 const sagaMiddleWare = createSagaMiddleware();
 
@@ -16,6 +17,7 @@ const persistConfig = {
 
 export const rootReducer = combineReducers({
   podcasts: podcastsReducer,
+  episodes: episodesReducer,
 });
 
 const store = configureStore({
