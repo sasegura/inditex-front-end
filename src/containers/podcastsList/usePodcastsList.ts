@@ -15,7 +15,10 @@ const usePodcastList = () => {
     dispatch(getPodcasts({}));
   }, [dispatch]);
 
-  return { podcastsList, isLoading };
+  const onHandleClick = (id: string) => {
+    console.log(id);
+  };
+  return { podcastsList, isLoading, onHandleClick };
 };
 
 export default usePodcastList;

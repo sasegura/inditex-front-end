@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   podcasts: [],
-  isLoadingPodcasts: false,
+  isLoadingPodcasts: true,
   hasErrorFetching: false,
 };
 
@@ -15,8 +15,8 @@ export const podcastsSlice = createSlice({
     },
     updatePodcasts: (state, action) => {
       state.podcasts = action.payload.feed.entry;
-      state.isLoadingPodcasts = false;
       state.hasErrorFetching = false;
+      state.isLoadingPodcasts = false;
     },
     errorFetchingPodcasts: (state, action) => {
       state.podcasts = [];
