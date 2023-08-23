@@ -1,11 +1,21 @@
-import { useState } from 'react';
-import { Podcast } from '../../interfaces/podcast';
+import { useEffect } from 'react';
+import {
+  getPodcasts,
+  isLoadingPodcasts,
+  podcasts,
+} from '../../store/reducers/podcastSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const usePodcastList = () => {
-  const [podcasts, setPodcasts] = useState<Podcast[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const podcastsList = useSelector(podcasts);
+  const isLoading = useSelector(isLoadingPodcasts);
 
-  return { podcasts, isLoading };
+  useEffect(() => {
+    dispatch(getPodcasts({}));
+  }, [dispatch]);
+
+  return { podcastsList, isLoading };
 };
 
 export default usePodcastList;
