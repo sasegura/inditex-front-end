@@ -51,7 +51,11 @@ const EpisodeTable = ({ episodes, isLoading }: EpisodeTableProps) => {
           ).map((row: Episode, index: number) => {
             if (index > 0)
               return (
-                <StyledTableRow key={episodes ? row?.trackId : index}>
+                <StyledTableRow
+                  key={
+                    episodes.length <= 0 && !isLoading ? row?.trackId : index
+                  }
+                >
                   <TableCell component="th" scope="row">
                     {!isLoading ? (
                       <Link to={`episode/${row?.trackId}`}>

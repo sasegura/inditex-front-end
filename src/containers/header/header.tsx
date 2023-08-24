@@ -17,7 +17,11 @@ const Header = () => {
     isLoadingPageSelector
       ? setIsLoadingHead(true)
       : setIsLoadingHead(false);
-  }, [isLoadingEpisodesSelector, isLoadingPodcastsSelector]);
+  }, [
+    isLoadingEpisodesSelector,
+    isLoadingPodcastsSelector,
+    isLoadingPageSelector,
+  ]);
 
   return <HeaderSection isLoading={isLoadingHead} />;
 };

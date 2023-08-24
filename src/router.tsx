@@ -8,6 +8,7 @@ import usePageLoadFinished from './hooks/usePageLoadFinished';
 
 const Router = () => {
   usePageLoadFinished();
+
   return (
     <Routes>
       <Route path="/" element={<PodcastsList />} />

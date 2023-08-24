@@ -15,6 +15,6 @@ const usePageLoadFinished = () => {
     return () => {
       dispatch(restoreLoading({}));
     };
-  }, [location.pathname]);
+  }, [location.pathname, dispatch]);
 };
 export default usePageLoadFinished;
