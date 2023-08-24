@@ -45,47 +45,48 @@ const EpisodeTable = ({ episodes, isLoading }: EpisodeTableProps) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {(!episodes ? Array.from(new Array(21)) : episodes).map(
-            (row: Episode, index: number) => {
-              if (index > 0)
-                return (
-                  <StyledTableRow key={episodes ? row.trackId : index}>
-                    <TableCell component="th" scope="row">
-                      {!isLoading ? (
-                        <Link to={`episode/${row.trackId}`}>
-                          {row.trackName}
-                        </Link>
+          {(episodes.length > 0 || !isLoading
+            ? episodes
+            : Array.from(new Array(21))
+          ).map((row: Episode, index: number) => {
+            if (index > 0)
+              return (
+                <StyledTableRow key={episodes ? row?.trackId : index}>
+                  <TableCell component="th" scope="row">
+                    {!isLoading ? (
+                      <Link to={`episode/${row?.trackId}`}>
+                        {row?.trackName}
+                      </Link>
+                    ) : (
+                      <Skeleton width={'400px'} />
+                    )}
+                  </TableCell>
+                  <TableCell align="right">
+                    {!isLoading ? (
+                      row?.releaseDate ? (
+                        DateTransform(row?.releaseDate)
                       ) : (
-                        <Skeleton width={'400px'} />
-                      )}
-                    </TableCell>
-                    <TableCell align="right">
-                      {!isLoading ? (
-                        row.releaseDate ? (
-                          DateTransform(row.releaseDate)
-                        ) : (
-                          '-'
-                        )
+                        '-'
+                      )
+                    ) : (
+                      <Skeleton width={'100px'} />
+                    )}
+                  </TableCell>
+                  <TableCell align="right">
+                    {!isLoading ? (
+                      row?.trackTimeMillis ? (
+                        milliSecondsToTime(row?.trackTimeMillis)
                       ) : (
-                        <Skeleton width={'100px'} />
-                      )}
-                    </TableCell>
-                    <TableCell align="right">
-                      {!isLoading ? (
-                        row.trackTimeMillis ? (
-                          milliSecondsToTime(row.trackTimeMillis)
-                        ) : (
-                          '-'
-                        )
-                      ) : (
-                        <Skeleton width={'87px'} />
-                      )}
-                    </TableCell>
-                  </StyledTableRow>
-                );
-              return <Fragment key={index} />;
-            }
-          )}
+                        '-'
+                      )
+                    ) : (
+                      <Skeleton width={'87px'} />
+                    )}
+                  </TableCell>
+                </StyledTableRow>
+              );
+            return <Fragment key={index} />;
+          })}
         </TableBody>
       </Table>
     </TableContainer>
