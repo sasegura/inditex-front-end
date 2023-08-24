@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   episodes: {},
-  isLoadingEpisodes: true,
+  isLoadingEpisodes: false,
   hasErrorFetching: false,
   lastFetchTimestamp: '',
 };

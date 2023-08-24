@@ -6,7 +6,7 @@ describe('Header', () => {
   test('Show the Podcaster title', async () => {
     render(
       <TestWrapper>
-        <HeaderSection />
+        <HeaderSection isLoading={false} />
       </TestWrapper>
     );
     const titleElement = screen.getByText('Podcaster');

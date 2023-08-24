@@ -1,7 +1,7 @@
-import { Divider, Grid } from '@mui/material';
+import { CircularProgress, Divider, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-function HeaderSection() {
+function HeaderSection({ isLoading }: { isLoading: boolean }) {
   return (
     <>
       <Grid container>
@@ -10,6 +10,11 @@ function HeaderSection() {
             <h2> Podcaster </h2>
           </Link>
         </Grid>
+        {isLoading && (
+          <Grid item xs={0.3} margin="auto">
+            <CircularProgress size="1.5em" />
+          </Grid>
+        )}
       </Grid>
       <Divider />
     </>

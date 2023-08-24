@@ -7,6 +7,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import podcastsReducer from './reducers/podcastSlice';
 import rootSaga from './sagas';
 import episodesReducer from './reducers/episodeSlice';
+import generalReducer from './reducers/rootSlice';
 
 const sagaMiddleWare = createSagaMiddleware();
 
@@ -16,6 +17,7 @@ const persistConfig = {
 };
 
 export const rootReducer = combineReducers({
+  general: generalReducer,
   podcasts: podcastsReducer,
   episodes: episodesReducer,
 });
