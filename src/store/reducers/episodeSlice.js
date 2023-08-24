@@ -4,6 +4,7 @@ const initialState = {
   episodes: [],
   isLoadingEpisodes: true,
   hasErrorFetching: false,
+  lastFetchTimestamp: '',
 };
 
 export const episodesSlice = createSlice({
@@ -17,11 +18,15 @@ export const episodesSlice = createSlice({
       state.episodes = action.payload.results;
       state.hasErrorFetching = false;
       state.isLoadingEpisodes = false;
+      state.lastFetchTimestamp = new Date();
     },
     errorFetchingEpisodes: (state, action) => {
       state.episodes = [];
       state.isLoadingEpisodes = false;
       state.hasErrorFetching = true;
+    },
+    restoreLoading: (state, action) => {
+      state.isLoadingEpisodes = false;
     },
   },
 });
@@ -29,8 +34,13 @@ export const episodesSlice = createSlice({
 export const episodes = (state) => state.episodes.episodes;
 export const isLoadingEpisodes = (state) => state.episodes.isLoadingEpisodes;
 export const hasErrorFetching = (state) => state.episodes.hasErrorFetching;
+export const lastFetchTimestamp = (state) => state.episodes.lastFetchTimestamp;
 
-export const { getEpisodes, updateEpisodes, errorFetchingEpisodes } =
-  episodesSlice.actions;
+export const {
+  getEpisodes,
+  updateEpisodes,
+  errorFetchingEpisodes,
+  restoreLoading,
+} = episodesSlice.actions;
 
 export default episodesSlice.reducer;

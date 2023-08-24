@@ -4,6 +4,7 @@ const initialState = {
   podcasts: [],
   isLoadingPodcasts: true,
   hasErrorFetching: false,
+  lastFetchTimestamp: '',
 };
 
 export const podcastsSlice = createSlice({
@@ -17,11 +18,15 @@ export const podcastsSlice = createSlice({
       state.podcasts = action.payload.feed.entry;
       state.hasErrorFetching = false;
       state.isLoadingPodcasts = false;
+      state.lastFetchTimestamp = new Date();
     },
     errorFetchingPodcasts: (state, action) => {
       state.podcasts = [];
       state.isLoadingPodcasts = false;
       state.hasErrorFetching = true;
+    },
+    restoreLoading: (state, action) => {
+      state.isLoadingPodcasts = false;
     },
   },
 });
@@ -29,8 +34,13 @@ export const podcastsSlice = createSlice({
 export const podcasts = (state) => state.podcasts.podcasts;
 export const isLoadingPodcasts = (state) => state.podcasts.isLoadingPodcasts;
 export const hasErrorFetching = (state) => state.podcasts.hasErrorFetching;
+export const lastFetchTimestamp = (state) => state.podcasts.lastFetchTimestamp;
 
-export const { getPodcasts, updatePodcasts, errorFetchingPodcasts } =
-  podcastsSlice.actions;
+export const {
+  getPodcasts,
+  updatePodcasts,
+  errorFetchingPodcasts,
+  restoreLoading,
+} = podcastsSlice.actions;
 
 export default podcastsSlice.reducer;
