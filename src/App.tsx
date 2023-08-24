@@ -1,4 +1,4 @@
-import { Container, Divider } from '@mui/material';
+import { Container } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './App.css';

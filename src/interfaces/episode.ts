@@ -6,3 +6,9 @@ export interface Episode {
   description: string;
   wrapperType: string;
 }
+
+export interface EpisodeDetail {
+  trackName: string;
+  description: string;
+  episodeUrl: string;
+}
