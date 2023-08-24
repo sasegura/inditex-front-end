@@ -31,14 +31,16 @@ const useEpisodeDetail = () => {
   }, [dispatch, podcastId]);
 
   useEffect(() => {
-    const episodeDetails = episodesList?.find((episode: Episode) => {
-      return episode.trackId.toString() === episodeId;
-    });
+    const episodeDetails = episodesList[podcastId]?.results?.find(
+      (episode: Episode) => {
+        return episode.trackId.toString() === episodeId;
+      }
+    );
 
     if (episodeDetails && !isLoading) {
-      setEpisode({ ...episode, ...episodeDetails });
+      setEpisode(episodeDetails);
     }
-  }, [episodesList, isLoading, episodeId, episode]);
+  }, [episodesList, podcastId, isLoading, episodeId]);
 
   return { isLoading, episode, hasErrorFetchingEpisode };
 };

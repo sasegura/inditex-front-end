@@ -15,7 +15,7 @@ const useEpisodeList = () => {
 
   const dispatch = useDispatch();
 
-  const episodesList = useSelector(episodes);
+  const episodesList = useSelector(episodes)[podcastId]?.results || [];
   const isLoading = useSelector(isLoadingEpisodes);
   const hasErrorFetchingEpisode = useSelector(hasErrorFetching);
 

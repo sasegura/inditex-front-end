@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  episodes: [],
+  episodes: {},
   isLoadingEpisodes: true,
   hasErrorFetching: false,
   lastFetchTimestamp: '',
@@ -15,10 +15,9 @@ export const episodesSlice = createSlice({
       state.isLoadingEpisodes = true;
     },
     updateEpisodes: (state, action) => {
-      state.episodes = action.payload.results;
+      state.episodes = action.payload;
       state.hasErrorFetching = false;
       state.isLoadingEpisodes = false;
-      state.lastFetchTimestamp = new Date();
     },
     errorFetchingEpisodes: (state, action) => {
       state.episodes = [];
